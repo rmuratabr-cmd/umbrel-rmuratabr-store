@@ -1,0 +1,22 @@
+manifestVersion: 1
+id: ght4-montar-discos
+category: files
+name: Montar Discos
+version: "1.0.0"
+tagline: Monta os 6 HDs e encaixa nas pastas dos apps
+description: >-
+  Monta os discos HD-01 a HD-06 pelo rotulo, encaixa as pastas nos caminhos
+  usados pelos apps, registra a saude (SMART) e reinicia os apps afetados.
+releaseNotes: ""
+developer: GHT4
+website: https://github.com/rmuratabr-cmd/umbrel-rmuratabr-store
+dependencies: []
+repo: https://github.com/rmuratabr-cmd/umbrel-rmuratabr-store
+support: https://github.com/rmuratabr-cmd/umbrel-rmuratabr-store
+port: 8789
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+submitter: GHT4
+submission: https://github.com/rmuratabr-cmd/umbrel-rmuratabr-store
