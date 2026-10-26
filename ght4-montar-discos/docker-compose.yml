@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: ght4-montar-discos_web_1
+      APP_PORT: 8080
+
+  montar:
+    image: alpine:3.20
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /dev:/dev
+      - /var/run/docker.sock:/var/run/docker.sock
+      - type: bind
+        source: /home/umbrel
+        target: /home/umbrel
+        bind:
+          propagation: rshared
+    command: sh -c "until apk add -q util-linux docker-cli smartmontools; do sleep 10; done; exec sh /home/umbrel/montar-discos.sh"
+
+  web:
+    image: busybox:1.36
+    restart: unless-stopped
+    volumes:
+      - /home/umbrel/montagem.log:/log/montagem.log:ro
+    command: sh -c "mkdir -p /www; while true; do (echo '<meta http-equiv=refresh content=30><pre>'; tail -60 /log/montagem.log; echo '</pre>') > /www/index.html; sleep 30; done & httpd -f -p 8080 -h /www"
